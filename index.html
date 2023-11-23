@@ -8,11 +8,35 @@
 <body>
     <script>
          function getComputerChoice(){
-            const choices = ["Rock", "Paper", "Scissors"];
+            const choices = ["rock", "paper", "scissors"];
             const random = Math.floor(Math.random()*choices.length);
-            console.log(choices[random]);
+            return(choices[random]);
          }
-         console.log(getComputerChoice());
-    </script>
+        function playRound (playerSelection,computerSelection){
+            computerSelection = getComputerChoice();
+            playerSelection = prompt("Shoot Your Shoot").toLowerCase();;
+            if (playerSelection === computerSelection){
+                return ("A Tie");
+            }else if (
+                (playerSelection === "rock" && computerSelection === "scissors") ||
+                (playerSelection === "paper" && computerSelection === "rock") ||
+                (playerSelection === "scissors" && computerSelection === "paper")
+            ){
+                return ('You Win! ' + playerSelection + ' beats ' + computerSelection + '.');
+            }else{
+                return ('You Lose! ' + computerSelection + ' beats ' + playerSelection + '.');
+            }
+        } 
+        function game(){
+            
+            for(let i =0; i <= 5; i++){
+                console.log(playRound())
+            }
+            
+        }
+        console.log(game());
+         
+</script>
+
 </body>
 </html>
