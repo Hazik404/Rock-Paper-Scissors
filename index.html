@@ -8,33 +8,52 @@
 <body>
     <script>
          function getComputerChoice(){
-            const choices = ["rock", "paper", "scissors"];
+            const choices = ["Rock", "Paper", "Scissors"];
             const random = Math.floor(Math.random()*choices.length);
             return(choices[random]);
          }
         function playRound (playerSelection,computerSelection){
             computerSelection = getComputerChoice();
-            playerSelection = prompt("Shoot Your Shoot").toLowerCase();;
-            if (playerSelection === computerSelection){
+            playerSelection = prompt("Enter Your Choice", "You Got No Chance");
+            let filterselection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+            if (filterselection === computerSelection){
                 return ("A Tie");
             }else if (
-                (playerSelection === "rock" && computerSelection === "scissors") ||
-                (playerSelection === "paper" && computerSelection === "rock") ||
-                (playerSelection === "scissors" && computerSelection === "paper")
+                (filterselection === "Rock" && computerSelection === "Scissors") ||
+                (filterselection === "Paper" && computerSelection === "Rock") ||
+                (filterselection === "Scissors" && computerSelection === "Paper")
             ){
-                return ('You Win! ' + playerSelection + ' beats ' + computerSelection + '.');
+                return ('You Win! ' + filterselection + ' beats ' + computerSelection + '.');
             }else{
-                return ('You Lose! ' + computerSelection + ' beats ' + playerSelection + '.');
+                return ('You Lose! ' + computerSelection + ' beats ' + filterselection + '.');
             }
         } 
         function game(){
+            let playercount= 0
+            let compcount = 0
             
-            for(let i =0; i <= 5; i++){
-                console.log(playRound())
+            for (let round = 1; round <= 5; round++){
+                let result = playRound()
+                console.log(result)
+
+                if (result.includes("Win")){
+                 playercount++;
+            }else if (result.includes("Lose")){
+                 compcount++
+            }
             }
             
+            if (playercount > compcount){
+                console.log("you win " + playercount+ " points")
+            }else if (playercount < compcount){
+                console.log("you loose " + compcount + " points" )
+            }else{
+                console.log("a tie " + playercount + " and " + compcount + " points")
+            }
+
+            
         }
-        console.log(game());
+        (game());
          
 </script>
 
