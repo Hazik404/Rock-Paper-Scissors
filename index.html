@@ -27,34 +27,7 @@
             }else{
                 return ('You Lose! ' + computerSelection + ' beats ' + filterselection + '.');
             }
-        } 
-        function game(){
-            let playercount= 0
-            let compcount = 0
-            
-            for (let round = 1; round <= 5; round++){
-                let result = playRound()
-                console.log(result)
-
-                if (result.includes("Win")){
-                 playercount++;
-            }else if (result.includes("Lose")){
-                 compcount++
-            }
-            }
-            
-            if (playercount > compcount){
-                console.log("you win " + playercount+ " points")
-            }else if (playercount < compcount){
-                console.log("you loose " + compcount + " points" )
-            }else{
-                console.log("a tie " + playercount + " and " + compcount + " points")
-            }
-
-            
-        }
-        (game());
-         
+        }         
 </script>
 
 </body>
