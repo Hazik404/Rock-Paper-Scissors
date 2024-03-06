@@ -8,12 +8,14 @@
 <body>
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>   
+    <button id="scissors">Scissors</button> 
+    <div id="result"></div>  
     <script>
 
         const rck = document.querySelector("#rock");
         const ppr = document.querySelector("#paper");
         const scors = document.querySelector("#scissors");
+        const rslt = document.querySelector("#result");
         
          function getComputerChoice(){
             const choices = ["Rock", "Paper", "Scissors"];
@@ -24,15 +26,15 @@
             computerSelection = getComputerChoice();
             
             if (playerSelection === computerSelection){
-                console.log ("A Tie");
+                rslt.textContent = "A Tie";
             }else if (
                 (playerSelection === "Rock" && computerSelection === "Scissors") ||
                 (playerSelection === "Paper" && computerSelection === "Rock") ||
                 (playerSelection === "Scissors" && computerSelection === "Paper")
             ){
-                console.log ('You Win! ' + playerSelection + ' beats ' + computerSelection + '.');
+                rslt.textContent = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '.';
             }else{
-                console.log ('You Lose! ' + computerSelection + ' beats ' + playerSelection + '.');
+                rslt.textContent = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '.';
             }
         } 
         rck.addEventListener("click", function(){
