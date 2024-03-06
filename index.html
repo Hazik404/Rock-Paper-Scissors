@@ -6,28 +6,44 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>   
     <script>
+
+        const rck = document.querySelector("#rock");
+        const ppr = document.querySelector("#paper");
+        const scors = document.querySelector("#scissors");
+        
          function getComputerChoice(){
             const choices = ["Rock", "Paper", "Scissors"];
             const random = Math.floor(Math.random()*choices.length);
             return(choices[random]);
          }
-        function playRound (playerSelection,computerSelection){
+        function playRound (playerSelection){
             computerSelection = getComputerChoice();
-            playerSelection = prompt("Enter Your Choice", "You Got No Chance");
-            let filterselection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-            if (filterselection === computerSelection){
-                return ("A Tie");
+            
+            if (playerSelection === computerSelection){
+                console.log ("A Tie");
             }else if (
-                (filterselection === "Rock" && computerSelection === "Scissors") ||
-                (filterselection === "Paper" && computerSelection === "Rock") ||
-                (filterselection === "Scissors" && computerSelection === "Paper")
+                (playerSelection === "Rock" && computerSelection === "Scissors") ||
+                (playerSelection === "Paper" && computerSelection === "Rock") ||
+                (playerSelection === "Scissors" && computerSelection === "Paper")
             ){
-                return ('You Win! ' + filterselection + ' beats ' + computerSelection + '.');
+                console.log ('You Win! ' + playerSelection + ' beats ' + computerSelection + '.');
             }else{
-                return ('You Lose! ' + computerSelection + ' beats ' + filterselection + '.');
+                console.log ('You Lose! ' + computerSelection + ' beats ' + playerSelection + '.');
             }
-        }         
+        } 
+        rck.addEventListener("click", function(){
+            playRound('Rock');
+        })
+        ppr.addEventListener("click", function(){
+            playRound('Paper');
+        })
+        scors.addEventListener("click", function(){
+            playRound('Scissors');
+        })        
 </script>
 
 </body>
