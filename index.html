@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button> 
+    <button id="scissors">Scissors</button>
     <div id="result"></div>  
+    <div id="score">Score: Player 0 - Computer 0</div>
+    
     <script>
 
         const rck = document.querySelector("#rock");
         const ppr = document.querySelector("#paper");
         const scors = document.querySelector("#scissors");
         const rslt = document.querySelector("#result");
+        const scoreDisplay = document.querySelector("#score");
         
-         function getComputerChoice(){
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice(){
             const choices = ["Rock", "Paper", "Scissors"];
             const random = Math.floor(Math.random()*choices.length);
             return(choices[random]);
          }
+
         function playRound (playerSelection){
             computerSelection = getComputerChoice();
             
@@ -33,10 +40,29 @@
                 (playerSelection === "Scissors" && computerSelection === "Paper")
             ){
                 rslt.textContent = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '.';
+                playerScore++;
             }else{
                 rslt.textContent = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '.';
+                computerScore++;
+            }
+
+            scoreDisplay.textContent = "Score: Player " + playerScore + " - Computer " + computerScore;
+
+            if(playerScore === 5) {
+                rslt.textContent = "Player Wins the game!";
+                disableButtons();
+            } else if(computerScore === 5) {
+                rslt.textContent = "Computer Wins the game!";
+                disableButtons();
             }
         } 
+
+        function disableButtons() {
+            rck.disabled = true;
+            ppr.disabled = true;
+            scors.disabled = true;
+        }
+
         rck.addEventListener("click", function(){
             playRound('Rock');
         })
@@ -46,7 +72,7 @@
         scors.addEventListener("click", function(){
             playRound('Scissors');
         })        
-</script>
+    </script>
 
 </body>
 </html>
